@@ -168,10 +168,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\Common.h" />
+    <ClInclude Include="inc\Common\Common_typedef.h" />
+    <ClInclude Include="inc\Common\DebugHelper.h" />
+    <ClInclude Include="inc\Common\DebugHelper.inl" />
     <ClInclude Include="inc\Common\StringHelper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\StringHelper.cpp" />
+    <None Include="inc\Common\StringHelper.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
