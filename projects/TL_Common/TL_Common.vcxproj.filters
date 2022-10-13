@@ -21,10 +21,11 @@
     <ClInclude Include="inc\Common\StringHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Common\Common_typedef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\StringHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="inc\Common\StringHelper.inl" />
   </ItemGroup>
 </Project>
