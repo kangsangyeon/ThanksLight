@@ -169,6 +169,8 @@
   <ItemGroup>
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\Common\Common_typedef.h" />
+    <ClInclude Include="inc\Common\DebugHelper.h" />
+    <ClInclude Include="inc\Common\DebugHelper.inl" />
     <ClInclude Include="inc\Common\StringHelper.h" />
   </ItemGroup>
   <ItemGroup>

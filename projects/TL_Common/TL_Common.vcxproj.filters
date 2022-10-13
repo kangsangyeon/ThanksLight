@@ -24,6 +24,12 @@
     <ClInclude Include="inc\Common\Common_typedef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Common\DebugHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Common\DebugHelper.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="inc\Common\StringHelper.inl" />
