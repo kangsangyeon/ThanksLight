@@ -17,14 +17,14 @@ tstring StringHelper::Format(const TCHAR* _format, Args ... _args)
     _sntprintf_s(_buffer, BUFFER_SIZE, _format, _args ...);
 
     const size_t _length = _tcslen(_buffer);
-    return tstring{_buffer, _buffer + _length};
+    return tstring{ _buffer, _buffer + _length };
 }
 
 inline std::vector<tstring> StringHelper::Split(const tstring& _str, const tstring& _token)
 {
     // Check parameters
     if (_token.length() == 0 || _str.find(_token) == tstring::npos)
-        return std::vector<tstring>({_str});
+        return std::vector<tstring>({ _str });
 
 
     // return var
@@ -52,10 +52,10 @@ inline std::wstring StringHelper::StringToWString(const char* _string)
     // MultiByteToWideChar 함수가 문자열의 끝에 자동으로 null 문자 ('\0')을 넣어주지 않습니다.
     // 따라서 문자열을 변환을 마친 후 그 뒤에다 수동으로 null문자를 넣어주어야 합니다.
     int _end = MultiByteToWideChar(CP_UTF8, MB_PRECOMPOSED, _string, _stringLength,
-                                   _buffer, _bufferLength);
+        _buffer, _bufferLength);
     _buffer[_end] = '\0';
 
-    auto _retVal = std::wstring{_buffer};
+    auto _retVal = std::wstring{ _buffer };
 
     delete[] _buffer;
     return _retVal;
@@ -75,11 +75,11 @@ inline std::string StringHelper::WStringToString(const wchar_t* _string)
     // WideCharToMultiByte 함수가 문자열의 끝에 자동으로 null 문자 ('\0')을 넣어주지 않습니다.
     // 따라서 문자열을 변환을 마친 후 그 뒤에다 수동으로 null문자를 넣어주어야 합니다.
     int _end = WideCharToMultiByte(CP_UTF8, 0, _string, _stringLength,
-                                   _buffer, _bufferLength,
-                                   nullptr, nullptr);
+        _buffer, _bufferLength,
+        nullptr, nullptr);
     _buffer[_end] = '\0';
 
-    auto _retVal = std::string{_buffer};
+    auto _retVal = std::string{ _buffer };
 
     delete[] _buffer;
     return _retVal;
