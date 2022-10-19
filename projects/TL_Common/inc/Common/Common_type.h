@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "Common/internal/dll.h"
+
 #include "Common_typedef.h"
 
 #include <array>

@@ -2,6 +2,7 @@
 
 #include "DebugHelper.h"
 
+#include <Windows.h>
 #include <debugapi.h>
 
 #include "StringHelper.h"
