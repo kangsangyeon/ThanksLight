@@ -1,10 +1,12 @@
 ﻿#pragma once
 
+#include "GameEngine/internal/dll.h"
+
 #include "Common.h"
 
 namespace TL_GameEngine
 {
-    class Application
+    class GAME_ENGINE_API Application
     {
     public:
         bool Initialize();

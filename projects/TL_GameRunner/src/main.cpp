@@ -1,5 +1,5 @@
-﻿#include "Common.h"
-#include "../../TL_GameEngine/inc/Application.h"
+﻿#include "Common_pch.h"
+#include "GameEngine/Application.h"
 
 #if defined(DEBUG) | defined(_DEBUG)
 
