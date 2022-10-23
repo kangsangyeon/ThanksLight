@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,6 +124,7 @@
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +143,7 @@
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,6 +162,7 @@
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,7 +179,22 @@
     <ClInclude Include="inc\GameEngine\internal\dll.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\GameEngine\GameFramework\Component\ComponentBase.h" />
+    <ClInclude Include="inc\GameEngine\GameFramework\Component\Transform.h" />
+    <ClInclude Include="inc\GameEngine\GameFramework\GameObject.h" />
+    <ClInclude Include="inc\GameEngine\GameFramework\Scene.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp" />
+    <ClCompile Include="src\GameEngine\GameFramework\Component\ComponentBase.cpp" />
+    <ClCompile Include="src\GameEngine\GameFramework\Component\Transform.cpp" />
+    <ClCompile Include="src\GameEngine\GameFramework\GameObject.cpp" />
+    <ClCompile Include="src\GameEngine\GameFramework\Scene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\GameEngine\GameFramework\GameObject.inl">
+      <FileType>Document</FileType>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
