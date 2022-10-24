@@ -4,7 +4,8 @@
 
 namespace TL_GameEngine
 {
-    ComponentBase::ComponentBase(GameObject* _gameObject, tstring _typeName) :
+    ComponentBase::ComponentBase(GameObject* _gameObject, const tstring& _typeName) :
+        Object(_typeName),
         m_GameObject(_gameObject),
         m_bEnable(true),
         m_Ticked(false) { }

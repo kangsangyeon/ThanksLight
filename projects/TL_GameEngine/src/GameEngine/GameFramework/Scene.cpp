@@ -8,6 +8,7 @@
 namespace TL_GameEngine
 {
     Scene::Scene(const tstring& _name) :
+        Object(TEXT("Scene")),
         m_Name(_name),
         m_GameObjects(0) { }
 

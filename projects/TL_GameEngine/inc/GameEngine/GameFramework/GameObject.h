@@ -3,6 +3,7 @@
 #include <cassert>
 
 #include "Common/Common_type.h"
+#include "GameEngine/Object.h"
 #include "GameEngine/GameFramework/Component/Transform.h"
 
 namespace TL_GameEngine
@@ -11,10 +12,11 @@ namespace TL_GameEngine
     class ColliderBase;
     class Scene;
 
-    class GameObject final
+    class GameObject final :
+        Object
     {
     public:
-        GameObject(Scene* _scene, tstring _typeName = TEXT("GameObject"));
+        GameObject(Scene* _scene, const tstring& _typeName = TEXT("GameObject"));
 
         ~GameObject() = default;
 

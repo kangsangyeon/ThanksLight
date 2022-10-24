@@ -1,15 +1,17 @@
 ﻿#pragma once
 
 #include "Common.h"
+#include "GameEngine/Object.h"
 
 namespace TL_GameEngine
 {
     class GameObject;
 
-    class ComponentBase abstract
+    class ComponentBase abstract :
+        Object
     {
     public:
-        ComponentBase(GameObject* _gameObject, tstring _typeName);
+        ComponentBase(GameObject* _gameObject, const tstring& _typeName);
 
         virtual ~ComponentBase() = default;
 

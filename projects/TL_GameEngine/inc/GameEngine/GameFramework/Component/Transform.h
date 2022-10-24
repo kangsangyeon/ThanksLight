@@ -7,7 +7,7 @@ namespace TL_GameEngine
     class Transform : public ComponentBase
     {
     public:
-        Transform(class GameObject* _gameObject, tstring _typeName = TEXT("Transform"));
+        Transform(class GameObject* _gameObject, const tstring& _typeName = TEXT("Transform"));
     //
     //     void UpdateWorldMatrix(const Matrix& _parentTM);
     //

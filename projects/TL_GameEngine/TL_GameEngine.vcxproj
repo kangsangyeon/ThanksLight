@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;$(SolutionDir)dependencies\stduuid\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;$(SolutionDir)dependencies\stduuid\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;$(SolutionDir)dependencies\stduuid\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -161,7 +161,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GAME_ENGINE_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TL_Common\inc;$(SolutionDir)TL_FBXLibrary\inc;$(SolutionDir)TL_Graphics\inc;$(SolutionDir)TL_Physics\inc;$(SolutionDir)dependencies\stduuid\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -176,7 +176,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\GameEngine\Application.h" />
-    <ClInclude Include="inc\GameEngine\internal\dll.h" />
+    <ClInclude Include="inc\GameEngine\Internal\dll.h" />
+    <ClInclude Include="inc\GameEngine\Internal\UUIDGenerator.h" />
+    <ClInclude Include="inc\GameEngine\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\GameEngine\GameFramework\Component\ComponentBase.h" />
@@ -185,6 +187,7 @@
     <ClInclude Include="inc\GameEngine\GameFramework\Scene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameEngine\GameFramework\Object.cpp" />
     <ClCompile Include="src\GameEngine\Application.cpp" />
     <ClCompile Include="src\GameEngine\GameFramework\Component\ComponentBase.cpp" />
     <ClCompile Include="src\GameEngine\GameFramework\Component\Transform.cpp" />

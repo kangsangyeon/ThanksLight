@@ -4,7 +4,7 @@
 
 using namespace TL_GameEngine;
 
-Transform::Transform(GameObject* _gameObject, tstring _typeName) :
+Transform::Transform(GameObject* _gameObject, const tstring& _typeName) :
     ComponentBase(_gameObject, _typeName)
     // m_LocalTM(Matrix::Identity),
     // m_WorldTM(Matrix::Identity),

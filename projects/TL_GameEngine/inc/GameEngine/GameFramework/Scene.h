@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Common.h"
+#include "GameEngine/Object.h"
 
 namespace TL_GameEngine
 {
@@ -8,7 +9,8 @@ namespace TL_GameEngine
     class ComponentBase;
     class Camera;
 
-    class Scene final
+    class Scene final :
+        Object
     {
     public:
         Scene(const tstring& _name);
