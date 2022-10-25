@@ -190,6 +190,7 @@
     <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\Common\Common_pch_cpp.h" />
     <ClInclude Include="inc\Common\internal\dll.h" />
+    <ClInclude Include="inc\Common\SingletonInstance.h" />
     <ClInclude Include="inc\Common_pch.h" />
     <ClInclude Include="inc\Common\Common_pch_Windows.h" />
     <ClInclude Include="inc\Common\Common_type.h" />

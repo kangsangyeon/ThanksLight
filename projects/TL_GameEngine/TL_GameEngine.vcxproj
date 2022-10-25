@@ -176,6 +176,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\GameEngine\Application.h" />
+    <ClInclude Include="inc\GameEngine\GameFramework\GameWorld.h" />
     <ClInclude Include="inc\GameEngine\Internal\dll.h" />
     <ClInclude Include="inc\GameEngine\Internal\UUIDGenerator.h" />
     <ClInclude Include="inc\GameEngine\Object.h" />
@@ -187,7 +188,7 @@
     <ClInclude Include="inc\GameEngine\GameFramework\Scene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameEngine\GameFramework\Object.cpp" />
+    <ClCompile Include="src\GameEngine\GameFramework\GameWorld.cpp" />
     <ClCompile Include="src\GameEngine\Application.cpp" />
     <ClCompile Include="src\GameEngine\GameFramework\Component\ComponentBase.cpp" />
     <ClCompile Include="src\GameEngine\GameFramework\Component\Transform.cpp" />

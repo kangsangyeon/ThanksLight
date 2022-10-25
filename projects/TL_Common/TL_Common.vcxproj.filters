@@ -45,6 +45,9 @@
     <ClInclude Include="inc\Common\internal\dll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Common\SingletonInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="inc\Common\StringHelper.inl" />

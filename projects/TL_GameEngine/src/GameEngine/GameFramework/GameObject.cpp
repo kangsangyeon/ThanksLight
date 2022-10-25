@@ -8,6 +8,7 @@ namespace TL_GameEngine
 {
     GameObject::GameObject(Scene* _scene, const tstring& _typeName) :
         Object(_typeName),
+        m_Scene(_scene),
         m_bEnable(true),
         m_Parent(nullptr),
         m_Childs(0),

@@ -1,6 +1,7 @@
 ﻿#include "GameEngine/GameFramework/Component/ComponentBase.h"
 
 #include "GameEngine/GameFramework/GameObject.h"
+#include "GameEngine/GameFramework/Scene.h"
 
 namespace TL_GameEngine
 {
@@ -8,7 +9,10 @@ namespace TL_GameEngine
         Object(_typeName),
         m_GameObject(_gameObject),
         m_bEnable(true),
-        m_Ticked(false) { }
+        m_Ticked(false)
+    {
+        _gameObject->GetScene()->OnAddComponent(this);
+    }
 
     void ComponentBase::PreTick()
     {

@@ -7,6 +7,12 @@ namespace TL_GameEngine
 {
     class GameObject;
 
+    class IRenderableComponent abstract
+    {
+    public:
+        virtual void Render() const abstract;
+    };
+
     class ComponentBase abstract :
         Object
     {
