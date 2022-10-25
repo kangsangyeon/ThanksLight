@@ -2,10 +2,10 @@ name: publish
 on:
   push:
     branches:
-      - main
+      - dev
   pull_request:
     branches:
-      - main
+      - dev
   workflow_dispatch:
 jobs:
   deploy:
@@ -24,8 +24,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: 'dev'
+          fetch-depth: 1
           persist-credentials: false
+          
+      - name: Update File Times
+        run: touch -c docs/*
 
       - name: set version
         run: echo "PROJECT_NUMBER = `git describe --tags`" >> docs/Doxyfile
