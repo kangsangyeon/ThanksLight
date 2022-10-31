@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "GameEngine/internal/dll.h"
+
 #include "Common.h"
 #include "GameEngine/Object.h"
 
@@ -7,14 +9,14 @@ namespace TL_GameEngine
 {
     class GameObject;
 
-    class IRenderableComponent abstract
+    class GAME_ENGINE_API IRenderableComponent abstract
     {
     public:
-        virtual void Render() const abstract;
+        virtual void Render() abstract;
     };
 
-    class ComponentBase abstract :
-        Object
+    class GAME_ENGINE_API ComponentBase abstract :
+        public Object
     {
     public:
         ComponentBase(GameObject* _gameObject, const tstring& _typeName);

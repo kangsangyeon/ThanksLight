@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "GameEngine/internal/dll.h"
+
 #include "Common.h"
 #include "GameEngine/Object.h"
 
@@ -9,49 +11,33 @@ namespace TL_GameEngine
     class ComponentBase;
     class Camera;
 
-    class Scene final :
-        Object
+    class GAME_ENGINE_API Scene final :
+        public Object
     {
         friend class GameWorld;
-        friend class GameObject;
         friend class ComponentBase;
+        friend class GameObject;
 
     public:
         Scene(const tstring& _name);
 
-        ~Scene();
+    private:
+        void AddRootGameObject(GameObject* _gameObject);
 
+        void AddComponent(ComponentBase* _component);
+
+        void RemoveRootGameObject(GameObject* _gameObject);
+
+        void RemoveComponent(ComponentBase* _component);
 
     private:
+        std::vector<GameObject*> m_RootGameObjects;
 
-        /**
-         * @brief (이 메소드는 GameWorld을 통해서만 호출됩니다.) <br>
-         * 씬이 종료될 때 호출됩니다.
-        */
-        void OnEndScene();
-
-        /**
-         * @brief (이 메소드는 GameObject의 생성자를 통해서만 호출됩니다.) <br>
-         * 이 씬에 GameObject를 추가할 때 호출됩니다.
-         * 게임 월드에 GameObject를 등록합니다.
-        */
-        void OnAddGameObject(GameObject* _gameObject);
-
-        /**
-         * @brief (이 메소드는 Component의 생성자를 통해서만 호출됩니다.) <br>
-         * 이 씬에 Component를 추가할 때 호출됩니다.
-         * 게임 월드에 Component를 등록합니다.
-        */
-        void OnAddComponent(ComponentBase* _component);
-
-    private:
-        std::vector<GameObject*> m_GameObjects;
-        
         std::unordered_set<ComponentBase*> m_Components;
 
     public:
-        inline std::vector<GameObject*> GetAllGameObjects() const { return m_GameObjects; }
+        inline const std::vector<GameObject*>& GetAllGameObjects() const { return m_RootGameObjects; }
 
-        inline std::unordered_set<ComponentBase*> GetAllComponents() const { return m_Components; }
+        inline const std::unordered_set<ComponentBase*>& GetAllComponents() const { return m_Components; }
     };
 }

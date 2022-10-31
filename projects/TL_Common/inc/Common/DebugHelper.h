@@ -4,6 +4,7 @@
 
 class COMMON_API DebugHelper
 {
+public:
     /**
      * @brief 형식화된 문자열을 debug console에 출력합니다.
     */

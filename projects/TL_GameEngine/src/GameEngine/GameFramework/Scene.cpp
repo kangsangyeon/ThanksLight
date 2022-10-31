@@ -10,35 +10,38 @@ namespace TL_GameEngine
 {
     Scene::Scene(const tstring& _name) :
         Object(TEXT("Scene")),
-        m_GameObjects(0) { }
-
-    Scene::~Scene()
+        m_RootGameObjects(0)
     {
-        for (const auto _gameObject : m_GameObjects)
-            delete _gameObject;
-
-        for (const auto _component : m_Components)
-            delete _component;
+        m_Name = _name;
     }
 
-    void Scene::OnAddGameObject(GameObject* _gameObject)
+    void Scene::AddRootGameObject(GameObject* _gameObject)
     {
-        GameWorld::Instance.AddGameObject(this, _gameObject);
+        assert(std::ranges::find(m_RootGameObjects, _gameObject) == m_RootGameObjects.end());
+
+        m_RootGameObjects.push_back(_gameObject);
     }
 
-    void Scene::OnAddComponent(ComponentBase* _component)
+    void Scene::AddComponent(ComponentBase* _component)
     {
-        GameWorld::Instance.AddComponent(this, _component);
+        assert(std::ranges::find(m_Components, _component) == m_Components.end());
+
+        m_Components.insert(_component);
     }
 
-    void Scene::OnEndScene()
+    void Scene::RemoveRootGameObject(GameObject* _gameObject)
     {
-        while (m_GameObjects.empty() == false)
-        {
-            // 씬 내의 모든 게임 오브젝트를 파괴합니다.
+        const auto _iter = std::ranges::find(m_RootGameObjects, _gameObject);
+        assert(_iter != m_RootGameObjects.end());
 
-            const auto _iter = m_GameObjects.begin();
-            GameWorld::Instance.DestroyImmediate(*_iter);
-        }
+        m_RootGameObjects.erase(_iter);
+    }
+
+    void Scene::RemoveComponent(ComponentBase* _component)
+    {
+        const auto _iter = std::ranges::find(m_Components, _component);
+        assert(_iter != m_Components.end());
+
+        m_Components.erase(_iter);
     }
 }

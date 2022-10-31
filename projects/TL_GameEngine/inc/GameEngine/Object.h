@@ -1,12 +1,14 @@
 ﻿#pragma once
 
+#include "GameEngine/internal/dll.h"
+
 #include "Common/Common_type.h"
 #include "Common/StringHelper.h"
 #include "GameEngine/Internal/UUIDGenerator.h"
 
 namespace TL_GameEngine
 {
-    class Object
+    class GAME_ENGINE_API Object
     {
     public:
         Object(const tstring& _typeName);
@@ -33,13 +35,13 @@ namespace TL_GameEngine
     };
 
     inline Object::Object(const tstring& _typeName) :
-        Object(_typeName, UUIDGenerator::Generate()) { }
+        Object(_typeName, StringHelper::Format(TEXT("New %s"), _typeName), UUIDGenerator::Generate()) { }
 
-    inline Object::Object(const tstring& _typeName, const tstring& _uuid) :
-        Object(_typeName, _uuid, StringHelper::Format(TEXT("%s {%s}"), _typeName, _uuid)) { }
+    inline Object::Object(const tstring& _typeName, const tstring& _name) :
+        Object(_typeName, _name, UUIDGenerator::Generate()) { }
 
-    inline Object::Object(const tstring& _typeName, const tstring& _uuid, const tstring& _name) :
+    inline Object::Object(const tstring& _typeName, const tstring& _name, const tstring& _uuid) :
         m_TypeName(_typeName),
-        m_UUID(_uuid),
-        m_Name(_name) { }
+        m_Name(_name),
+        m_UUID(_uuid) { }
 }

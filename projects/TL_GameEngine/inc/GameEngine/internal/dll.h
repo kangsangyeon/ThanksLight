@@ -8,7 +8,7 @@
 #if defined(_WIN32) && defined(GAME_ENGINE_BUILD_DLL)
     /* We are building Hashing as a Win32 DLL */
     #define GAME_ENGINE_API __declspec(dllexport)
-#elif defined(_WIN32) && defined(GAME_ENGINE_API)
+#elif defined(_WIN32)
     /* We are calling Hashing as a Win32 DLL */
     #define GAME_ENGINE_API __declspec(dllimport)
 #elif defined(__GNUC__) && defined(GAME_ENGINE_BUILD_DLL)

@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "GameEngine/internal/dll.h"
+
+#include <Windows.h>
 #include <cassert>
 
 #include "Common/Common_type.h"
@@ -12,13 +15,15 @@ namespace TL_GameEngine
     class ColliderBase;
     class Scene;
 
-    class GameObject final :
-        Object
+    class GAME_ENGINE_API GameObject final :
+        public Object
     {
     public:
         GameObject(Scene* _scene, const tstring& _typeName = TEXT("GameObject"));
 
         ~GameObject() = default;
+
+        void ReserveDestroy();
 
         void SetScene(Scene* _scene);
 
@@ -46,8 +51,6 @@ namespace TL_GameEngine
         void RemoveComponent(TComponent* _component);
 
         std::vector<ComponentBase*> GetAllComponents();
-
-        void ReserveDestroy();
 
     private:
         bool m_bEnable;
@@ -88,8 +91,10 @@ namespace TL_GameEngine
         template <> \
         TComponent* GetComponent<class TComponent>(){ return &this->ComponentMemberName; } \
         template <> \
-        TComponent* AddComponent<class TComponent>() { assert(true); }
+        TComponent* AddComponent<class TComponent>() { assert(true); return nullptr; }
 
         __DEFINE_GAME_OBJECT_GET_EMBEDDED_COMPONENT__(Transform, m_Transform)
     };
 }
+
+#include "GameEngine/GameFramework/GameObject.inl"
