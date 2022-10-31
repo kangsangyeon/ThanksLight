@@ -194,14 +194,8 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TL_Common\TL_Common.vcxproj">
-      <Project>{1e2dd089-556a-4bc5-9e4b-4676be45604f}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\TL_GameClient\TL_GameClient.vcxproj">
       <Project>{42c3c016-999e-401a-aa19-4264dcef7506}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\TL_GameEngine\TL_GameEngine.vcxproj">
-      <Project>{b9a5e45b-2b0d-4613-9eb6-61be39f628cf}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
