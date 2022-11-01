@@ -20,5 +20,10 @@ public:
 
 private:
     TL_GameEngine::Scene* _scene;
+    TL_GameEngine::Scene* _scene2;
+
     TL_GameEngine::GameObject* _gameObject1;
+    TL_GameEngine::GameObject* _gameObject1_Child;
+    TL_GameEngine::GameObject* _gameObject2;
+    TL_GameEngine::GameObject* _gameObject2_Child;
 };

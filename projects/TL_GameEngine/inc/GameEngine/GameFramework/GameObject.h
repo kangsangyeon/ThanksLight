@@ -18,6 +18,8 @@ namespace TL_GameEngine
     class GAME_ENGINE_API GameObject final :
         public Object
     {
+        friend class GameWorld;
+
     public:
         GameObject(Scene* _scene, const tstring& _typeName = TEXT("GameObject"));
 
@@ -28,10 +30,6 @@ namespace TL_GameEngine
         void SetScene(Scene* _scene);
 
         void SetParent(GameObject* _parent);
-
-        void AddChild(GameObject* _newChild);
-
-        void RemoveChild(GameObject* _child);
 
         /// <summary>
         /// 게임 컴포넌트가 가지고 있는 컴포넌트 중에서 입력받은 타입과 일치하거나 이 타입의 서브타입의 컴포넌트가 있는 경우
@@ -62,6 +60,13 @@ namespace TL_GameEngine
         std::vector<GameObject*> m_Childs;
 
         std::vector<ComponentBase*> m_Components;
+
+    private:
+        void AddChild(GameObject* _newChild);
+
+        void RemoveChild(GameObject* _child);
+
+        void SetSceneRecursive(Scene* _scene);
 
     public:
         // tstring GetName() const;

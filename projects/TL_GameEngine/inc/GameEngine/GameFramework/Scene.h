@@ -36,7 +36,7 @@ namespace TL_GameEngine
         std::unordered_set<ComponentBase*> m_Components;
 
     public:
-        inline const std::vector<GameObject*>& GetAllGameObjects() const { return m_RootGameObjects; }
+        inline const std::vector<GameObject*>& GetAllRootGameObjects() const { return m_RootGameObjects; }
 
         inline const std::unordered_set<ComponentBase*>& GetAllComponents() const { return m_Components; }
     };

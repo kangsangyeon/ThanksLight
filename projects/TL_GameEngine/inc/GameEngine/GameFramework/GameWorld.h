@@ -67,7 +67,9 @@ namespace TL_GameEngine
          * @param _scene 게임 오브젝트가 새로이 포함될 대상 씬입니다.
          * @param _gameObject 대상 게임 오브젝트입니다.
         */
-        void AddGameObjectAsRoot(GameObject* _gameObject);
+        void AddRootGameObject(GameObject* _gameObject);
+
+        void RemoveRootGameObject(GameObject* _gameObject);
 
         /**
          * @brief (이 메소드는 Scene과 GameObject에서만 호출됩니다.)
@@ -76,6 +78,8 @@ namespace TL_GameEngine
          * @param _gameObject 대상 컴포넌트입니다.
         */
         void AddComponent(ComponentBase* _component);
+
+        void RemoveComponent(ComponentBase* _component);
 
     private:
         std::vector<GameObject*> m_RootGameObjects;

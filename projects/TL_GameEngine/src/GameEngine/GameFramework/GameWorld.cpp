@@ -73,10 +73,22 @@ namespace TL_GameEngine
 
     void GameWorld::DestroyImmediate(GameObject* _gameObject)
     {
-        if (const auto _iter = std::ranges::find(m_RootGameObjects, _gameObject);
-            _iter != m_RootGameObjects.end())
+        if (_gameObject->GetParent() != nullptr)
         {
-            m_RootGameObjects.erase(_iter);
+            // 부모를 가지고 있다면, 
+            // 부모로부터 떼어냅니다.
+            _gameObject->GetParent()->RemoveChild(_gameObject);
+            _gameObject->m_Parent = nullptr;
+        }
+        else
+        {
+            if (const auto _iter = std::ranges::find(m_RootGameObjects, _gameObject);
+                _iter != m_RootGameObjects.end())
+            {
+                m_RootGameObjects.erase(_iter);
+            }
+
+            _gameObject->GetScene()->RemoveRootGameObject(_gameObject);
         }
 
         // 게임 오브젝트의 하위에 있는 모든 자식들을 재귀적으로 삭제합니다.
@@ -86,16 +98,6 @@ namespace TL_GameEngine
         // 게임 오브젝트의 모든 컴포넌트를 삭제합니다.
         for (const auto _component : _gameObject->GetAllComponents())
             DestroyImmediate(_component);
-
-        if (_gameObject->GetParent() != nullptr)
-        {
-            // 씬에는 더 이상 해당 게임 오브젝트가 존재하지 않습니다.
-            _gameObject->GetScene()->RemoveRootGameObject(_gameObject);
-        }
-
-        // 부모로부터 떼어냅니다.
-        _gameObject->SetParent(nullptr);
-
 
         delete _gameObject;
     }
@@ -144,7 +146,7 @@ namespace TL_GameEngine
             {
                 // 열려있던 기존 씬이 존재한다면,
                 // 씬을 전환하기 전에 기존 씬의 모든 오브젝트를 파괴합니다.
-                std::ranges::for_each(m_ActiveScene->GetAllGameObjects(), [](auto _go) { _go->ReserveDestroy(); });
+                std::ranges::for_each(m_ActiveScene->GetAllRootGameObjects(), [](auto _go) { _go->ReserveDestroy(); });
                 ProceedDestroy();
 
                 delete m_ActiveScene;
@@ -155,13 +157,20 @@ namespace TL_GameEngine
         }
     }
 
-    void GameWorld::AddGameObjectAsRoot(GameObject* _gameObject)
+    void GameWorld::AddRootGameObject(GameObject* _gameObject)
     {
         // 이미 월드상에 루트로 존재하는 오브젝트의 추가에 대한 요청은 잘못된 요청입니다.
         assert(std::ranges::find(m_RootGameObjects, _gameObject) == m_RootGameObjects.end());
 
         m_RootGameObjects.push_back(_gameObject);
-        _gameObject->GetScene()->m_RootGameObjects.push_back(_gameObject);
+    }
+
+    void GameWorld::RemoveRootGameObject(GameObject* _gameObject)
+    {
+        const auto _iter = std::ranges::find(m_RootGameObjects, _gameObject);
+        assert(_iter != m_RootGameObjects.end());
+
+        m_RootGameObjects.erase(_iter);
     }
 
     void GameWorld::AddComponent(ComponentBase* _component)
@@ -171,6 +180,15 @@ namespace TL_GameEngine
 
         m_WaitingForStartComponents.push_back(_component);
         m_Components.push_back(_component);
-        _component->GetGameObject()->GetScene()->m_Components.insert(_component);
+        _component->GetGameObject()->GetScene()->AddComponent(_component);
+    }
+
+    void GameWorld::RemoveComponent(ComponentBase* _component)
+    {
+        const auto _iter = std::ranges::find(m_Components, _component);
+        assert(_iter != m_Components.end());
+
+        m_Components.erase(_iter);
+        _component->GetGameObject()->GetScene()->RemoveComponent(_component);
     }
 }
