@@ -1,10 +1,11 @@
 ﻿#pragma once
 
+#include "Common/internal/dll.h"
 #include "Common_typedef.h"
 
 #include <vector>
 
-class StringHelper
+class COMMON_API StringHelper
 {
 public:
     /**

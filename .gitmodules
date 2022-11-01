@@ -1,0 +1,3 @@
+[submodule "projects/TL_GameEngine/dependencies/stduuid"]
+	path = projects/TL_GameEngine/dependencies/stduuid
+	url = https://github.com/mariusbancila/stduuid.git
